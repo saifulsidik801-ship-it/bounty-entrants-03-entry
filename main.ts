@@ -10,7 +10,7 @@
 // any cwd. Plain JavaScript syntax only, so it runs under Node 22 with
 // or without type stripping.
 
-import { copyFileSync, readFileSync } from "node:fs";
+import { copyFileSync, mkdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -18,6 +18,10 @@ const repoDir = dirname(fileURLToPath(import.meta.url));
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
 const source = join(repoDir, "BOUNTY.json");
 const destination = join(outDir, "BOUNTY.json");
+
+// The grader may hand us a fresh output directory that does not exist
+// yet, so make sure it is there before copying into it.
+mkdirSync(outDir, { recursive: true });
 
 // The manifest must be a JSON object with a non-empty "bounties" array
 // of strings. Refuse a malformed manifest loudly instead of shipping
