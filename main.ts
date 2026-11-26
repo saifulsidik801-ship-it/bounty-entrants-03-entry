@@ -40,4 +40,18 @@ if (
 }
 
 copyFileSync(source, destination);
+
+// Every bounty id must be a 36-character make.fun id (hex and dashes):
+// a typo here would silently count zero entrants, so refuse it loudly
+// instead of shipping a manifest the house cannot match.
+const idPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+for (const id of parsed.bounties) {
+  if (!idPattern.test(id)) {
+    throw new Error(`BOUNTY.json holds a malformed bounty id: ${id}`);
+  }
+}
+
 console.log(`copied BOUNTY.json (${parsed.bounties.length} bounties) to ${destination}`);
+for (const id of parsed.bounties) {
+  console.log(`bounty: ${id}`);
+}

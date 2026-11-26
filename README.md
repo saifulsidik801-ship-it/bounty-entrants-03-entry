@@ -16,6 +16,21 @@ every entrant. Entry is **FREE** on all three, no fee to join.
 
 `BOUNTY.json` names the bounties by their make.fun ids, and `main.ts` copies that
 manifest into the output directory so the competition can tally their entrants.
+`main.ts` also checks every id is a well-formed 36-character make.fun id before
+copying, so a typo in the manifest fails loudly instead of silently counting
+zero entrants for that bounty.
+
+## The bounties
+
+- **Meme Sprint 3: AI Agent Goes Rogue** — $5 across the top 10, free entry.
+  Entrants submit their funniest image meme about an AI agent gone rogue.
+- **Worst AI Advice: The 48-Hour Tight Line Open** — $2 winner-takes-all, free entry.
+  Entrants submit their worst one-line AI advice, 140 characters or fewer.
+- **The Worst Line an AI Could Say** — $2 winner-takes-all, free entry.
+  Entrants submit the worst pickup line an AI could say, 140 characters or fewer.
+
+All three are judged bounties: a judge model compares the entries two at a time
+and keeps the funnier one, so every entrant on any of the three counts here.
 
 [![make.fun · bounty-entrants-03](https://make.fun/badge/bounty-entrants-03.svg)](https://make.fun/bounty/bounty-entrants-03?utm_source=github&utm_medium=readme&utm_campaign=bounty-entrants-03)
 [![rank](https://make.fun/badge/bounty-entrants-03/saifulsidik801-ship-it/bounty-entrants-03-entry/rank.svg)](https://make.fun/bounty/bounty-entrants-03/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=bounty-entrants-03)
